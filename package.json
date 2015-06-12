@@ -1,0 +1,14 @@
+{
+  "name": "PKImgr",
+  "version": "1.0.0",
+  "description": "Certificate & Keys distribution center",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Samuel MARTIN MORO",
+  "license": "BSD",
+  "dependencies": {
+    "express": "^4.12.3"
+  }
+}
