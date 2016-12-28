@@ -1,5 +1,5 @@
-var certroot = '/home/pki';
-var listen   = 8080;
+var certroot = process.env.PKI_ROOT || '/home/pki';
+var listen   = process.env.LISTEN_PORT || 8080;
 
 var assert   = require('assert');
 var exec     = require('child_process').exec;
@@ -39,6 +39,7 @@ xapp.get(/^\/certificate\/([^\/]+)\/([^\/]+)\//, function (req, res, next) {
 	var cert = req.params[1];
 	var host = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 
+	if (host.indexOf(',') > 0) { host = host.split(',')[0]; }
 	reverseLookup("crt", host, ca, cert, res);
     });
 
@@ -47,6 +48,7 @@ xapp.get(/^\/key\/([^\/]+)\/([^\/]+)\//, function (req, res, next) {
 	var cert = req.params[1];
 	var host = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 
+	if (host.indexOf(',') > 0) { host = host.split(',')[0]; }
 	reverseLookup("key", host, ca, cert, res);
     });
 
