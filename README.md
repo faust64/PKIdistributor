@@ -1,8 +1,6 @@
 PKImgr - a NodeJS&express.js based service, distributing certificates and keys
 ==============================================================================
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/faust64/PKIdistributor.svg)](https://greenkeeper.io/)
-
 Assuming your DNS databases are properly configured, your local hosts should have their own PTR record.
 PKImgr allows you to install both certiicates and keys to your servers by downloading them directly from your PKI server. Any host may query for the files corresponding to its PTR record, and nothing else.
 
