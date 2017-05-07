@@ -31,15 +31,7 @@ Short version (jessie/xenial)
 # systemctl stop nginx
 # adduser pm2RuntimeUser
 # chown pm2RuntimeUser /var/log/pm2
-# cat /usr/local/lib/node_modules/pm2/lib/templates/init-scripts/systemd.tpl \
-    | sed -e 's|%PM2_PATH%|/usr/local/lib/node_modules/pm2/bin/pm2|g' \
-        -e 's|%USER%|pm2RuntimeUser|g' -e 's|%NODE_PATH%|/usr/bin|' \
-        -e 's|%HOME_PATH%|/home/pm2RuntimeUser/.pm2|' >/tmp/pm2.service
-# chmod 0644 /tmp/pm2.service
-# mv /tmp/pm2.service /usr/lib/systemd/system/pm2.service
-# systemctl daemon-reload
-# systemctl enable pm2
-# systemctl start pm2
+# pm2 startup systemd --hp /home/pm2RuntimeUser/.pm2 -u pm2RuntimeUser >/dev/null 2>&1
 # cd /path/to/PKIdistributor
 # npm install
 # su -l pm2RuntimeUser -s /bin/bash
@@ -141,5 +133,4 @@ EOF
 
 Obviously
 ---------
-This service shouldn't be exposed as is.
-Keep it behind any SSL (and proxy) capable web server.
+This service shouldn't be exposed as is. Keep it behind any SSL capable proxy.
