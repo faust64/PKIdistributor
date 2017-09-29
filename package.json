@@ -9,6 +9,6 @@
   "author": "Samuel MARTIN MORO",
   "license": "BSD",
   "dependencies": {
-    "express": "^4.15.3"
+    "express": "^4.16.0"
   }
 }
